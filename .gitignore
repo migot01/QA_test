@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# IDE & OS
+.DS_Store
+.idea/
+*.log
+*.local
+
+# Env
+.env
+.env.*
+!.env.example
