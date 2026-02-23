@@ -1,0 +1,12 @@
+# Netlify config – build and deploy the booking-flow app
+
+[build]
+  base    = "booking-flow"
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+# SPA fallback (if you add client-side routing later)
+[[redirects]]
+  from    = "/*"
+  to      = "/index.html"
+  status  = 200
