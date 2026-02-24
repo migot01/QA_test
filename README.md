@@ -2,6 +2,8 @@
 
 This repo contains the **booking flow implementation** and all **QA deliverables** for the fictional UK skip hire booking system.
 
+**Live demo:** [Skip Hire Booking](https://relaxed-klepon-a9c614.netlify.app/) on Netlify
+
 ---
 
 ## Contents
@@ -25,15 +27,6 @@ npm install
 npm run dev          # App at http://localhost:5173
 npm run test:e2e     # Playwright E2E (starts dev server if needed)
 ```
-
----
-
-## Deploy to Netlify
-
-1. Push this repo to GitHub (or GitLab/Bitbucket).
-2. In [Netlify](https://app.netlify.com): **Add new site** → **Import an existing project** → choose your Git provider and repo.
-3. Netlify will use the repo’s `netlify.toml`: it builds from the `booking-flow/` directory and publishes the `dist` folder. No need to change build settings.
-4. Click **Deploy**. Your site will be available at `https://<random>.netlify.app` (you can set a custom domain later).
 
 ---
 
