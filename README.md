@@ -1,6 +1,6 @@
 # Skip Hire Booking – QA Assessment
 
-This repo contains the **booking flow implementation** and all **QA deliverables** for the fictional UK skip hire booking system.
+This repo contains the **booking flow implementation** and all **QA deliverables** for the UK skip hire booking system.
 
 **Live demo:** [Skip Hire Booking](https://relaxed-klepon-a9c614.netlify.app/) on Netlify
 
