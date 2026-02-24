@@ -4,46 +4,9 @@
 **Environment:** Local / mock API  
 **Report date:** Feb 2025  
 
----
 
-## BUG-001: Disabled skip can be included in booking if selected before it becomes disabled
 
-**Severity:** High  
-**Priority:** P1  
-
-**Summary**  
-If the user selects an available skip and then the list is refetched (e.g. after going back to change waste type), a previously selected skip might now be disabled. The UI can still show that skip as selected and allow the user to proceed to Review and attempt confirmation.
-
-**Steps to reproduce**  
-1. Complete Step 1 (postcode + address) and Step 2 (waste type).  
-2. On Step 3, select an available skip (e.g. 4yd).  
-3. Click Back to Step 2, change waste type (e.g. add Heavy waste), then Continue to Step 3.  
-4. Assume the API now returns the same skip but with `disabled: true`.  
-5. Observe: the previously selected skip may still appear selected.  
-6. Click Continue and complete Step 4, then Confirm booking.
-
-**Expected result**  
-- When skips are refetched, any previously selected skip that is now `disabled` is cleared.  
-- User must explicitly select an available skip again before Continue is enabled.
-
-**Actual result**  
-- Selected skip state is not cleared when the skips list is replaced.  
-- User can proceed to Review and Confirm with a disabled skip, leading to potential server-side rejection or inconsistent state.
-
-**Evidence**  
-- In `Step3Skip.jsx`, `setSkip(null)` is called in the effect when refetching, but the dependency array may not cover all refetch scenarios, or the UI might still show the old selection if state updates are batched.
-
-**Suggested fix**  
-- In the same effect that calls `setSkips(data.skips)`, clear selection if the current `skip` is not in the new list or is disabled:  
-  `setSkip((current) => (current && data.skips?.some(s => s.size === current.size && !s.disabled) ? current : null))`  
-- Alternatively, derive “selected skip” from the current `skips` array and a selected size/id so that when the list changes, selection is automatically invalidated if the chosen skip is no longer available.
-
-**Affected components**  
-- `Step3Skip.jsx`, `App.jsx` (skip state).
-
----
-
-## BUG-002: No explicit validation that selected address belongs to entered postcode
+## BUG-001: No explicit validation that the selected address belongs to the entered postcode
 
 **Severity:** Medium  
 **Priority:** P2  
